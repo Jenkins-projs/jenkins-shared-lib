@@ -19,9 +19,7 @@ jobMaxAge = 10
 
 tick = "\u2713"
 trash = "\u267B"
-
 jobMap = Jenkins.instance.itemMap
-
 def padJob(def jobname){
   return "${jobname}".padRight(50,".")
 }
@@ -129,14 +127,14 @@ def call(args = [:]) {
                 steps {
                     script {
                     // Clean the workspace on master
-					println "[MASTER]"
-					cleanupNode(new FilePath(Jenkins.instance.rootPath,'workspace'))
+			println "[MASTER]"
+			cleanupNode(new FilePath(Jenkins.instance.rootPath,'workspace'))
 		
-					// Clean the workspace on slave nodes
-					def nodes = Jenkins.instance.nodes
-					for (node in nodes) {
-					processNode(node)
-					}                                            
+		    // Clean the workspace on slave nodes
+         		def nodes = Jenkins.instance.nodes
+	         	for (node in nodes) {
+			processNode(node)
+			}                                            
                    }
                 }
             }
