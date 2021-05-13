@@ -17,8 +17,8 @@ deleteStaleMultiBranchJobs = false
 deleteOldJobs = false
 jobMaxAge = 10
 
-tick = "\u2713"
-trash = "\u267B"
+//tick = "\u2713"
+//trash = "\u267B"
 
 //jobMap = Jenkins.instance.itemMap
 
@@ -29,9 +29,11 @@ def padJob(def jobname){
 def deleteWorkflowBranchJob(def subdir){
   if(deleteStaleMultiBranchJobs){
     //subdir.deleteRecursive()
-    return "${trash} removed"
+    //return "${trash} removed"
+    return "removed"
   }else{
-    return "${trash} DELETE DISABLED, change 'deleteStaleMultiBranchJobs' to enable"
+    //return "${trash} DELETE DISABLED, change 'deleteStaleMultiBranchJobs' to enable"
+    return " DELETE DISABLED, change 'deleteStaleMultiBranchJobs' to enable"
   }
 }
 
@@ -64,10 +66,12 @@ def purgeAncientJob(def job, def dir){
   def buildAgeSec = (System.currentTimeMillis() - job.getLastBuild().getTimeInMillis()).intdiv(1000)
   def buildAgeDays = buildAgeSec.intdiv(3600).intdiv(24)
   if(buildAgeDays > jobMaxAge ){
-      println padJob(".... $dir.name")+" ${trash} removed - build is older than 10 days"
+      //println padJob(".... $dir.name")+" ${trash} removed - build is older than 10 days"
+      println padJob(".... $dir.name")+"removed - build is older than 10 days"
      // dir.deleteRecursive()
   } else{
-    println padJob(".... $dir.name")+" ${tick}    ${job.getLastBuild().getTimestampString()} - build is less than 10 days "
+    //println padJob(".... $dir.name")+" ${tick}    ${job.getLastBuild().getTimestampString()} - build is less than 10 days "
+    println padJob(".... $dir.name")+"    ${job.getLastBuild().getTimestampString()} - build is less than 10 days "
   }
 }
 
@@ -88,12 +92,14 @@ def cleanupNode(def ws){
           }
         }
       }else if(job instanceof WorkflowJob){
-        println padJob(".. $dir.name")+" existing pipeline job ${tick}"
+        //println padJob(".. $dir.name")+" existing pipeline job ${tick}"
+        println padJob(".. $dir.name")+" existing pipeline job"
       }else{
         println padJob(".. $dir.name")+" job of type ${job}"
       }
     }else{
-	  println padJob(".... $dir.name")+" ${trash} removed - Blue Ocean/Stale Ws"
+	  //println padJob(".... $dir.name")+" ${trash} removed - Blue Ocean/Stale Ws"
+	  println padJob(".... $dir.name")+" removed - Blue Ocean/Stale Ws"
      // dir.deleteRecursive()
     }
     println()
