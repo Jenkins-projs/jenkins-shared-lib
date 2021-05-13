@@ -70,8 +70,8 @@ def purgeAncientJob(def job, def dir){
       println padJob(".... $dir.name")+"removed - build is older than 10 days"
      // dir.deleteRecursive()
   } else{
-    println padJob(".... $dir.name")+" ${tick}    ${job.getLastBuild().getTimestampString()} - build is less than 10 days "
-    //println padJob(".... $dir.name")+"    ${job.getLastBuild().getTimestampString()} - build is less than 10 days "
+    //println padJob(".... $dir.name")+" ${tick}    ${job.getLastBuild().getTimestampString()} - build is less than 10 days "
+    println padJob(".... $dir.name")+"    ${job.getLastBuild().getTimestampString()} - build is less than 10 days "
   }
 }
 
@@ -92,8 +92,8 @@ def cleanupNode(def ws){
           }
         }
       }else if(job instanceof WorkflowJob){
-        println padJob(".. $dir.name")+" existing pipeline job ${tick}"
-       // println padJob(".. $dir.name")+" existing pipeline job"
+       // println padJob(".. $dir.name")+" existing pipeline job ${tick}"
+        println padJob(".. $dir.name")+" existing pipeline job"
       }else{
         println padJob(".. $dir.name")+" job of type ${job}"
       }
