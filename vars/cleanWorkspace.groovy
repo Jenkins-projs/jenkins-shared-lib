@@ -19,7 +19,9 @@ jobMaxAge = 10
 
 tick = "\u2713"
 trash = "\u267B"
-jobMap = Jenkins.instance.itemMap
+
+//jobMap = Jenkins.instance.itemMap
+
 def padJob(def jobname){
   return "${jobname}".padRight(50,".")
 }
@@ -48,7 +50,7 @@ def lookupJob(def lookup, def parent){
   if(parent != null){
     job = parent.getItem(lookup)
   }else{
-    job = jobMap[lookup]
+    job = Jenkins.instance.itemMap[lookup]
   }
   return job;
 }
