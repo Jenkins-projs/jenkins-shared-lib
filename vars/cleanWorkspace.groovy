@@ -17,7 +17,7 @@ deleteStaleMultiBranchJobs = false
 deleteOldJobs = false
 jobMaxAge = 10
 
-def tick = "\u2713"
+//def tick = "\u2713"
 //trash = "\u267B"
 
 //jobMap = Jenkins.instance.itemMap
