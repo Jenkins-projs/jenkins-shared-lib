@@ -14,7 +14,6 @@ import org.jenkinsci.plugins.workflow.job.WorkflowJob;
 
 //Configurable options
 deleteStaleMultiBranchJobs = false
-deleteOldJobs = false
 
 //jobMap = Jenkins.instance.itemMap
 
