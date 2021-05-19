@@ -17,9 +17,6 @@ deleteStaleMultiBranchJobs = false
 deleteOldJobs = false
 jobMaxAge = 10
 
-//def tick = "\u2713"
-//trash = "\u267B"
-
 //jobMap = Jenkins.instance.itemMap
 
 def padJob(def jobname){
@@ -29,11 +26,9 @@ def padJob(def jobname){
 def deleteWorkflowBranchJob(def subdir){
   if(deleteStaleMultiBranchJobs){
     //subdir.deleteRecursive()
-    //return "${trash} removed"
-    return "removed"
+    return "\u267B removed"
   }else{
-    //return "${trash} DELETE DISABLED, change 'deleteStaleMultiBranchJobs' to enable"
-    return " DELETE DISABLED, change 'deleteStaleMultiBranchJobs' to enable"
+    return "\u267B DELETE DISABLED, change 'deleteStaleMultiBranchJobs' to enable"
   }
 }
 
@@ -66,12 +61,10 @@ def purgeAncientJob(def job, def dir){
   def buildAgeSec = (System.currentTimeMillis() - job.getLastBuild().getTimeInMillis()).intdiv(1000)
   def buildAgeDays = buildAgeSec.intdiv(3600).intdiv(24)
   if(buildAgeDays > jobMaxAge ){
-      //println padJob(".... $dir.name")+" ${trash} removed - build is older than 10 days"
-      println padJob(".... $dir.name")+"removed - build is older than 10 days"
+      println padJob(".... $dir.name")+" \u267B removed - build is older than 10 days"
      // dir.deleteRecursive()
   } else{
-    //println padJob(".... $dir.name")+" ${tick}    ${job.getLastBuild().getTimestampString()} - build is less than 10 days "
-    println padJob(".... $dir.name")+"    ${job.getLastBuild().getTimestampString()} - build is less than 10 days "
+    println padJob(".... $dir.name")+" \u2713    ${job.getLastBuild().getTimestampString()} - build is less than 10 days "
   }
 }
 
@@ -92,14 +85,12 @@ def cleanupNode(def ws){
           }
         }
       }else if(job instanceof WorkflowJob){
-       // println padJob(".. $dir.name")+" existing pipeline job ${tick}"
-        println padJob(".. $dir.name")+" existing pipeline job"
+       println padJob(".. $dir.name")+" existing pipeline job \u2713"
       }else{
         println padJob(".. $dir.name")+" job of type ${job}"
       }
     }else{
-	    println padJob(".... $dir.name")+" ${args.trash} removed - Blue Ocean/Stale Ws"
-	  //println padJob(".... $dir.name")+" removed - Blue Ocean/Stale Ws"
+	println padJob(".... $dir.name")+" \u267B removed - Blue Ocean/Stale Ws"
      // dir.deleteRecursive()
     }
     println()
@@ -124,8 +115,7 @@ def processNode(def node){
 def call(args = [:]) {
     // default parameters
     def defaultArgs = [     
-            webexRoomId            : "",
-	    trash : "\u267B"
+            webexRoomId            : ""
     ]
     args = defaultArgs + args;
 
