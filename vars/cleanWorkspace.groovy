@@ -15,7 +15,6 @@ import org.jenkinsci.plugins.workflow.job.WorkflowJob;
 //Configurable options
 deleteStaleMultiBranchJobs = false
 deleteOldJobs = false
-jobMaxAge = 10
 
 //jobMap = Jenkins.instance.itemMap
 
@@ -53,10 +52,11 @@ def lookupJob(def lookup, def parent){
 }
 
 def purgeAncientJob(def job, def dir){
-	if (job.isBuilding()) {
-      println(".. job " + jobName + " is currently running, skipped")
-	  continue
-	}
+  if (job.isBuilding()) {
+  println(".. job " + jobName + " is currently running, skipped")
+  continue
+  }
+  jobMaxAge = 10
   def buildAgeSec = (System.currentTimeMillis() - job.getLastBuild().getTimeInMillis()).intdiv(1000)
   def buildAgeDays = buildAgeSec.intdiv(3600).intdiv(24)
   if(buildAgeDays > jobMaxAge ){
