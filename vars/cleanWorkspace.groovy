@@ -86,7 +86,7 @@ def cleanupNode(def ws){
         println padJob(".. $dir.name")+" job of type ${job}"
       }
     }else{
-	println padJob(".... $dir.name")+" \u267B removed - Blue Ocean/Stale Ws"+dir.lastModified()
+	println padJob(".... $dir.name")+" \u267B removed - Blue Ocean/Stale Ws"+dir.lastModified().getTimeInMillis()).intdiv(1000)
      // dir.deleteRecursive()
     }
     println()
