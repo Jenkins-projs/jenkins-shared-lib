@@ -86,8 +86,8 @@ def cleanupNode(def ws){
         println padJob(".. $dir.name")+" job of type ${job}"
       }
     }else{
-	buildAgeDays = (System.currentTimeMillis() - dir.lastModified().getTimeInMillis()) / (1000*60*60*24)
-	println padJob(".... $dir.name")+" \u267B removed - Blue Ocean/Stale Ws"+buildAgeDays
+	
+	println padJob(".... $dir.name")+" \u267B removed - Blue Ocean workspace/Stale workspace"
      // dir.deleteRecursive()
     }
     println()
