@@ -53,7 +53,6 @@ def lookupJob(def lookup, def parent){
 }
 
 def purgeAncientJob(def job, def dir){
-  
 	if (job.isBuilding()) {
       println(".. job " + jobName + " is currently running, skipped")
 	  continue
@@ -67,8 +66,6 @@ def purgeAncientJob(def job, def dir){
     println padJob(".... $dir.name")+" \u2713    ${job.getLastBuild().getTimestampString()} - build is less than 10 days "
   }
 }
-
-
 
 def cleanupNode(def ws){
   for(dir in ws.listDirectories()){
