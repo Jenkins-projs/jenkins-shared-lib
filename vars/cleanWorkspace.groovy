@@ -98,7 +98,7 @@ def cleanupNode(def ws){
         println padJob(".. $dir.name")+" job of type ${job}"
       }
     }else{
-	  println padJob(".... $dir.name")+" \u267B removed - Blue Ocean/Stale Ws"
+	    println padJob(".... $dir.name")+" ${trash} removed - Blue Ocean/Stale Ws"
 	  //println padJob(".... $dir.name")+" removed - Blue Ocean/Stale Ws"
      // dir.deleteRecursive()
     }
@@ -124,7 +124,8 @@ def processNode(def node){
 def call(args = [:]) {
     // default parameters
     def defaultArgs = [     
-            webexRoomId            : ""
+            webexRoomId            : "",
+	    trash : "\u267B"
     ]
     args = defaultArgs + args;
 
