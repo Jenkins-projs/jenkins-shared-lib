@@ -87,7 +87,7 @@ def cleanupNode(def ws){
       }
     }else{
 	
-	println padJob(".... $dir.name")+" \u267B removed - Blue Ocean workspace/Stale workspace"+new Date(dir.lastModified()).format('MM/dd/yyyy hh:mm:ss a')
+	println padJob(".... $dir.name")+" \u267B removed - Blue Ocean workspace/Stale workspace"
      // dir.deleteRecursive()
     }
     println()
