@@ -53,8 +53,7 @@ def lookupJob(def lookup, def parent){
 def purgeAncientJob(def job, def dir){
   if (job.isBuilding()) {
   println(".. job " + jobName + " is currently running, skipped")
-  continue
-  }
+  }else{
   jobMaxAge = 10
   def buildAgeSec = (System.currentTimeMillis() - job.getLastBuild().getTimeInMillis()).intdiv(1000)
   def buildAgeDays = buildAgeSec.intdiv(3600).intdiv(24)
@@ -63,6 +62,7 @@ def purgeAncientJob(def job, def dir){
      // dir.deleteRecursive()
   } else{
     println padJob(".... $dir.name")+" \u2713    ${job.getLastBuild().getTimestampString()} - build is less than 10 days "
+  }
   }
 }
 
@@ -100,6 +100,7 @@ def processNode(def node){
     println "[$node.displayName]  OFFLINE"
   }else{       
     try{
+      println "node name :"+computer
       def ws = node.getWorkspaceRoot()
       cleanupNode(ws)
     }finally{
@@ -127,6 +128,7 @@ def call(args = [:]) {
 			cleanupNode(new FilePath(Jenkins.instance.rootPath,'workspace'))
 		
 		    // Clean the workspace on slave nodes
+			println "[Slave Nodes]" 
          		def nodes = Jenkins.instance.nodes
 	         	for (node in nodes) {
 			processNode(node)
