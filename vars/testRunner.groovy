@@ -11,7 +11,7 @@ def call(args = [:]) {
     ]
     def aemEnvs = defaultAemEnvs
     pipeline {
-        agent  master
+        agent any
         stages {
             stage('test') {
                 options {
