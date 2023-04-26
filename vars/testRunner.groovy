@@ -21,16 +21,15 @@ def call(args = [:]) {
                     message "Select a branch and AEM environment."
                     ok "Confirm"
                     parameters {
-                      string(name: 'TEST_BRANCH_INPUT', defaultValue : 'develop', description: 'Which branch do you want to test?')
-                      choice(name: 'AEM_SERVER_INPUT', choices: aemEnvs*.resourceName, description: 'Which server to test against?')
-                      string(name: 'CYPRESS_SPEC_NAME_INPUT', defaultValue: '', description: 'Provide path after integration folder in Cypress Directory.')
+                      string(name: 'BRANCH_INPUT', defaultValue : 'develop', description: 'Which branch do you want to test?')
+                      string(name: 'test3', defaultValue: '', description: 'Provide path .')
                       }
                 }
 
                 steps {
                     script {
-                        echo "Selected branch: ${env.TEST_BRANCH_INPUT}"
-                        echo "Selected server: ${env.AEM_SERVER_INPUT}"
+                        echo "Selected branch: ${env.BRANCH_INPUT}"
+                     
 						}
 					}
 			}
