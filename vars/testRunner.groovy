@@ -5,9 +5,9 @@ def call(args = [:]) {
     ]
     args = defaultArgs + args
     def defaultAemEnvs = [
-            AemEnv.DEV1,
-            AemEnv.DEV2,
-            AemEnv.DEV3
+            'dev1',
+            'dev2',
+            'dev3'
     ]
     def aemEnvs = defaultAemEnvs
     pipeline {
