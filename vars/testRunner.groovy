@@ -2,19 +2,14 @@ def call(args = [:]) {
    
     def defaultArgs = [
 			userInputTimeout       : 60
-            additionalAemEnvs      : []
     ]
-
     args = defaultArgs + args
-
     def defaultAemEnvs = [
             AemEnv.DEV1,
             AemEnv.DEV2,
             AemEnv.DEV3
     ]
-
-    def aemEnvs = defaultAemEnvs + args.additionalAemEnvs
-
+    def aemEnvs = defaultAemEnvs
     pipeline {
         agent  master
         stages {
