@@ -28,7 +28,7 @@ def call(args = [:]) {
 
                 steps {
                     script {
-                        echo "Selected branch: ${env.BRANCH_INPUT}"
+                        echo "Selected branch: ${params.BRANCH_INPUT}"
                      
 						}
 					}
